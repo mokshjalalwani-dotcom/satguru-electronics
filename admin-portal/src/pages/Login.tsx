@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import { Shield, User, ChevronRight, Lock, TrendingUp, Zap } from "lucide-react";
+import { Shield, User, ChevronRight, Lock, TrendingUp, Zap, ShoppingCart } from "lucide-react";
 
 const Login: React.FC = () => {
   const { login } = useAuth();
@@ -86,6 +86,23 @@ const Login: React.FC = () => {
                     </div>
                   </div>
                   <ChevronRight size={18} className="text-white/20 group-hover:text-white transition-colors relative z-10" />
+                </button>
+
+                <button 
+                  onClick={() => window.open(window.location.hostname === 'localhost' ? 'http://localhost:5174' : '/pos-portal', '_blank')}
+                  className="w-full group bg-black/30 border border-white/10 hover:border-blue-500/30 rounded-2xl p-5 flex items-center justify-between transition-all hover:shadow-[0_0_15px_rgba(59,130,246,0.08)] relative overflow-hidden"
+                >
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-bl-full pointer-events-none opacity-0 group-hover:opacity-100 transition-all" />
+                  <div className="flex items-center gap-4 relative z-10">
+                    <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform border border-blue-500/20">
+                      <ShoppingCart size={22} />
+                    </div>
+                    <div className="text-left">
+                      <p className="font-bold text-white leading-none text-[15px]">POS Portal</p>
+                      <p className="text-xs text-muted/60 mt-1.5">Customer checkout & billing system</p>
+                    </div>
+                  </div>
+                  <ChevronRight size={18} className="text-white/20 group-hover:text-blue-400 transition-colors relative z-10" />
                 </button>
               </div>
             </div>
