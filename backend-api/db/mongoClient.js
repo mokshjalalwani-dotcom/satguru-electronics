@@ -7,7 +7,10 @@ const AI_SERVICE_INTERNAL = process.env.AI_SERVICE_INTERNAL_URL || 'http://local
 
 const connectDB = async () => {
     try {
-        await mongoose.connect(MONGODB_URI);
+        mongoose.set('bufferCommands', false);
+        await mongoose.connect(MONGODB_URI, {
+            serverSelectionTimeoutMS: 5000, // Fail fast if DB is unreachable
+        });
         console.log('MongoDB Connected...');
         
         // Auto-seed if empty
