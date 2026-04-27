@@ -23,6 +23,13 @@ app.use('/api/ai', aiRoute);
 app.use('/api/settings', settingsRoute);
 
 const frontendPath = path.join(__dirname, 'admin-portal', 'dist');
+const posPortalPath = path.join(__dirname, 'pos-portal', 'dist');
+
+app.use('/pos-portal', express.static(posPortalPath));
+app.get('/pos-portal/*', (req, res) => {
+  res.sendFile(path.join(posPortalPath, 'index.html'));
+});
+
 app.use(express.static(frontendPath));
 app.get('*', (req, res) => {
   res.sendFile(path.join(frontendPath, 'index.html'));
